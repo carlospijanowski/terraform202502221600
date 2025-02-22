@@ -7,6 +7,11 @@ resource "aws_instance" "app_java" {
   instance_type = "t2.micro"
   key_name      = "cartaxopair"  # Use uma chave SSH válida
 
+  # Adicione a VPC e a Subnet aqui
+  subnet_id     = "subnet-019de342b52f0598a"  # Substitua pelo seu Subnet ID
+  vpc_security_group_ids = [aws_security_group.app_sg.id]
+
+
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
@@ -25,4 +30,31 @@ resource "aws_instance" "app_java" {
 output "public_ip" {
   description = "IP público da EC2"
   value       = aws_instance.app_java.public_ip
+}
+
+resource "aws_security_group" "app_sg" {
+  name        = "allow-ssh-http"
+  description = "Habilita SSH e HTTP"
+  vpc_id      = "vpc-04c1328bfd5f54555"  # Substitua pelo seu VPC ID
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
