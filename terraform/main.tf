@@ -33,29 +33,29 @@ output "public_ip" {
   value       = aws_instance.app_java.public_ip
 }
 
-resource "aws_security_group" "app_sg" {
-  name        = "allow-ssh-http"
-  description = "Habilita SSH e HTTP"
-  vpc_id      = "vpc-079bff02e3fe38790"  # Substitua pelo seu VPC ID
-
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
+# resource "aws_security_group" "app_sg" {
+#   name        = "allow-ssh-http"
+#   description = "Habilita SSH e HTTP"
+#   vpc_id      = "vpc-079bff02e3fe38790"  # Substitua pelo seu VPC ID
+#
+#   ingress {
+#     from_port   = 22
+#     to_port     = 22
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+#
+#   ingress {
+#     from_port   = 8080
+#     to_port     = 8080
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+#
+#   egress {
+#     from_port   = 0
+#     to_port     = 0
+#     protocol    = "-1"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+# }
