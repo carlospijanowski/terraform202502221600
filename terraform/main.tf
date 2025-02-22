@@ -9,7 +9,8 @@ resource "aws_instance" "app_java" {
 
   # Adicione a VPC e a Subnet aqui
   subnet_id     = "subnet-019de342b52f0598a"  # Substitua pelo seu Subnet ID
-  vpc_security_group_ids = [aws_security_group.app_sg.id]
+  # vpc_security_group_ids = [aws_security_group.app_sg.id]
+  vpc_security_group_ids = ["sg-098dd2785633ad011"]
 
 
   user_data = <<-EOF
