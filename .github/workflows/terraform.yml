@@ -3,7 +3,7 @@ name: Deploy com Terraform
 on:
   push:
     branches:
-      - main  # Rodar quando houver push na branch main
+      - main
 
 jobs:
   terraform:

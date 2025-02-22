@@ -24,7 +24,7 @@ resource "aws_instance" "app_java" {
               EOF
 
   tags = {
-    Name = "Servidor-Java"
+    Name = "20250222 1600 - Java"
   }
 }
 
