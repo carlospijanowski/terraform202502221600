@@ -35,7 +35,7 @@ output "public_ip" {
 resource "aws_security_group" "app_sg" {
   name        = "allow-ssh-http"
   description = "Habilita SSH e HTTP"
-  vpc_id      = "vpc-04c1328bfd5f54555"  # Substitua pelo seu VPC ID
+  vpc_id      = "vpc-079bff02e3fe38790"  # Substitua pelo seu VPC ID
 
   ingress {
     from_port   = 22
